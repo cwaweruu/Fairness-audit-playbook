@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairness Acceptance Criteria Worksheet</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+        }
+        .section {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px 0;
+            font-weight: 600;
+            color: #333;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .checkbox-group {
+            margin: 10px 0;
+        }
+        .checkbox-item {
+            margin: 8px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .output {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px dashed #667eea;
+            font-family: monospace;
+            white-space: pre-wrap;
+            display: none;
+        }
+        .tip {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Fairness Acceptance Criteria Worksheet</h1>
+        <p>Use this worksheet to develop comprehensive fairness acceptance criteria using the FAIR framework.</p>
+
+        <div class="section">
+            <h2>Feature Context</h2>
+            <label>Feature Name:</label>
+            <input type="text" id="featureName" placeholder="e.g., Resume Categorization System">
+            
+            <label>Protected Attributes:</label>
+            <textarea id="protectedAttrs" placeholder="e.g., Gender (male, female, non-binary), Race (White, Black, Asian, Hispanic), Career Path Type"></textarea>
+        </div>
+
+        <div class="section">
+            <h2>F - Fairness Metrics Thresholds</h2>
+            <div class="tip">💡 Tip: Set realistic thresholds based on your risk profile. High-stakes decisions (hiring, lending) should use stricter thresholds (< 3-5%).</div>
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="metric1" value="demo-parity">
+                    <label for="metric1" style="display: inline;">Demographic parity difference < </label>
+                    <input type="text" id="metric1-val" placeholder="0.05" style="width: 60px; display: inline;">
+                    <span> across all protected attributes</span>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="metric2" value="equal-opp">
+                    <label for="metric2" style="display: inline;">Equal opportunity difference (TPR parity) < </label>
+                    <input type="text" id="metric2-val" placeholder="0.03" style="width: 60px; display: inline;">
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="metric3" value="calibration">
+                    <label for="metric3" style="display: inline;">Calibration error < </label>
+                    <input type="text" id="metric3-val" placeholder="0.04" style="width: 60px; display: inline;">
+                    <span> between any two groups</span>
+                </div>
+            </div>
+            
+            <label>Additional Custom Metrics:</label>
+            <textarea id="customMetrics" placeholder="e.g., False positive rate < 10% for all groups"></textarea>
+        </div>
+
+        <div class="section">
+            <h2>A - Auditing Requirements</h2>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="audit1" value="dataset-rep">
+                    <label for="audit1" style="display: inline;">Dataset representation verified (minimum sample size per group)</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="audit2" value="disagg-perf">
+                    <label for="audit2" style="display: inline;">Disaggregated performance testing completed</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="audit3" value="model-card">
+                    <label for="audit3" style="display: inline;">Bias testing documented in model card</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="audit4" value="review">
+                    <label for="audit4" style="display: inline;">Independent review completed</label>
+                </div>
+            </div>
+            
+            <label>Additional Audit Requirements:</label>
+            <textarea id="customAudits" placeholder="e.g., Manual review of 100 cases per demographic group"></textarea>
+        </div>
+
+        <div class="section">
+            <h2>I - Intersectional Analysis</h2>
+            <label>Key Intersectional Groups to Analyze:</label>
+            <textarea id="intersectional" placeholder="e.g., Black women, Asian men with career gaps, Hispanic non-binary candidates"></textarea>
+            
+            <label>Maximum Disparity Threshold Across Intersectional Groups:</label>
+            <input type="text" id="intersectThreshold" placeholder="e.g., < 8%">
+        </div>
+
+        <div class="section">
+            <h2>R - Reporting Guidelines</h2>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="report1" value="dashboard">
+                    <label for="report1" style="display: inline;">Fairness dashboard updated with current metrics</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="report2" value="limitations">
+                    <label for="report2" style="display: inline;">Known limitations documented</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="report3" value="stakeholder">
+                    <label for="report3" style="display: inline;">Stakeholder-facing summary prepared</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="report4" value="compliance">
+                    <label for="report4" style="display: inline;">Compliance documentation completed</label>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="generateCriteria()">Generate Acceptance Criteria</button>
+
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function generateCriteria() {
+            const featureName = document.getElementById('featureName').value || '[Feature Name]';
+            const protectedAttrs = document.getElementById('protectedAttrs').value || '[Protected Attributes]';
+            
+            let output = `## Fairness Acceptance Criteria for ${featureName}\n\n`;
+            
+            // Fairness Metrics
+            output += `### Fairness Metrics (F)\n`;
+            if (document.getElementById('metric1').checked) {
+                const val = document.getElementById('metric1-val').value || '0.05';
+                output += `- [ ] Demographic parity difference < ${val} across ${protectedAttrs}\n`;
+            }
+            if (document.getElementById('metric2').checked) {
+                const val = document.getElementById('metric2-val').value || '0.03';
+                output += `- [ ] Equal opportunity difference < ${val} across ${protectedAttrs}\n`;
+            }
+            if (document.getElementById('metric3').checked) {
+                const val = document.getElementById('metric3-val').value || '0.04';
+                output += `- [ ] Calibration error < ${val} between any two groups\n`;
+            }
+            const customMetrics = document.getElementById('customMetrics').value;
+            if (customMetrics) {
+                customMetrics.split('\n').forEach(m => {
+                    if (m.trim()) output += `- [ ] ${m.trim()}\n`;
+                });
+            }
+            
+            // Auditing
+            output += `\n### Auditing Requirements (A)\n`;
+            if (document.getElementById('audit1').checked) {
+                output += `- [ ] Dataset representation verified (minimum sample size per group)\n`;
+            }
+            if (document.getElementById('audit2').checked) {
+                output += `- [ ] Disaggregated performance testing completed\n`;
+            }
+            if (document.getElementById('audit3').checked) {
+                output += `- [ ] Bias testing documented in model card\n`;
+            }
+            if (document.getElementById('audit4').checked) {
+                output += `- [ ] Independent review completed\n`;
+            }
+            const customAudits = document.getElementById('customAudits').value;
+            if (customAudits) {
+                customAudits.split('\n').forEach(a => {
+                    if (a.trim()) output += `- [ ] ${a.trim()}\n`;
+                });
+            }
+            
+            // Intersectional
+            output += `\n### Intersectional Analysis (I)\n`;
+            const intersectional = document.getElementById('intersectional').value;
+            if (intersectional) {
+                output += `- [ ] Performance analyzed for: ${intersectional}\n`;
+            }
+            const intersectThreshold = document.getElementById('intersectThreshold').value;
+            if (intersectThreshold) {
+                output += `- [ ] Maximum disparity across intersectional groups ${intersectThreshold}\n`;
+            }
+            output += `- [ ] Edge cases identified and documented\n`;
+            
+            // Reporting
+            output += `\n### Reporting Guidelines (R)\n`;
+            if (document.getElementById('report1').checked) {
+                output += `- [ ] Fairness dashboard updated with current metrics\n`;
+            }
+            if (document.getElementById('report2').checked) {
+                output += `- [ ] Known limitations documented in release notes\n`;
+            }
+            if (document.getElementById('report3').checked) {
+                output += `- [ ] Stakeholder-facing summary prepared\n`;
+            }
+            if (document.getElementById('report4').checked) {
+                output += `- [ ] Compliance documentation completed\n`;
+            }
+            
+            document.getElementById('output').textContent = output;
+            document.getElementById('output').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
