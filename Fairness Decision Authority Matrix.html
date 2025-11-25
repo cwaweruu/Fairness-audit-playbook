@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairness Decision Authority Matrix</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .tier-exec {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .tier-board {
+            background: #ffd93d;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .tier-team {
+            background: #6bcf7f;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .decision-type {
+            font-weight: 600;
+            color: #667eea;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Fairness Decision Authority Matrix</h1>
+        <p>Use this matrix to identify who has authority to make different types of fairness decisions.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Decision Type</th>
+                    <th style="width: 15%;">Authority</th>
+                    <th style="width: 45%;">Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="decision-type">Set organization-wide fairness vision</td>
+                    <td><span class="tier-exec">Executive Council</span></td>
+                    <td>"We commit to equal opportunity across all hiring products"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Approve fairness budgets > $100K</td>
+                    <td><span class="tier-exec">Executive Council</span></td>
+                    <td>"Allocate $250K for external fairness audits"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Launch high-risk product with known bias</td>
+                    <td><span class="tier-exec">Executive Council</span></td>
+                    <td>"Approve hiring tool despite 7% disparity with mitigation plan"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Set maximum acceptable disparity thresholds</td>
+                    <td><span class="tier-exec">Executive Council</span></td>
+                    <td>"No product may exceed 5% demographic parity difference"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Develop fairness metric selection guidelines</td>
+                    <td><span class="tier-board">AI Ethics Board</span></td>
+                    <td>"Use equal opportunity for hiring, demographic parity for lending"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Create cross-team fairness standards</td>
+                    <td><span class="tier-board">AI Ethics Board</span></td>
+                    <td>"All teams must conduct intersectional analysis for key groups"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Approve product fairness strategies</td>
+                    <td><span class="tier-board">AI Ethics Board</span></td>
+                    <td>"Resume screening may use reweighting + threshold optimization"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Resolve cross-team fairness conflicts</td>
+                    <td><span class="tier-board">AI Ethics Board</span></td>
+                    <td>"Hiring and background check teams must use consistent definitions"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Commission fairness audits</td>
+                    <td><span class="tier-board">AI Ethics Board</span></td>
+                    <td>"Conduct Q3 internal audit of all high-risk products"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Choose specific bias mitigation technique</td>
+                    <td><span class="tier-team">Product Team</span></td>
+                    <td>"Use adversarial debiasing instead of reweighting for this model"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Allocate sprint capacity to fairness tasks</td>
+                    <td><span class="tier-team">Product Team</span></td>
+                    <td>"Reserve 20% of next sprint for fairness testing"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Prioritize fairness technical debt</td>
+                    <td><span class="tier-team">Product Team</span></td>
+                    <td>"Address age bias before geographic bias next sprint"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Select test datasets and protocols</td>
+                    <td><span class="tier-team">Product Team</span></td>
+                    <td>"Use 500 samples per demographic group for validation"</td>
+                </tr>
+                <tr>
+                    <td class="decision-type">Document fairness properties in model cards</td>
+                    <td><span class="tier-team">Product Team</span></td>
+                    <td>"Known limitation: May undervalue freelance experience"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <strong>⚠️ Note:</strong> Decision authority does not mean deciding alone. All decisions should involve consultation with relevant stakeholders. This matrix clarifies who has <em>final authority</em> and <em>accountability</em> for each decision type.
+        </div>
+
+        <h2 style="color: #667eea; margin-top: 40px;">Escalation Pathways</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Issue Severity</th>
+                    <th>Escalate From → To</th>
+                    <th>Timeframe</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Low:</strong> Disparity within thresholds but concerning</td>
+                    <td><span class="tier-team">Team</span> → <span class="tier-team">Team</span> (self-managed)</td>
+                    <td>Next sprint</td>
+                </tr>
+                <tr>
+                    <td><strong>Medium:</strong> Exceeds thresholds, mitigation unclear</td>
+                    <td><span class="tier-team">Team</span> → <span class="tier-board">AI Ethics Board</span></td>
+                    <td>Within 3 days</td>
+                </tr>
+                <tr>
+                    <td><strong>High:</strong> Significant harm potential or regulatory risk</td>
+                    <td><span class="tier-board">Board</span> → <span class="tier-exec">Executive Council</span></td>
+                    <td>Within 24 hours</td>
+                </tr>
+                <tr>
+                    <td><strong>Critical:</strong> Active harm occurring or legal violation</td>
+                    <td><span class="tier-team">Any Tier</span> → <span class="tier-exec">Executive Council</span></td>
+                    <td>Immediate</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
